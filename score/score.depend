@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1677099935 source:/home/matthew/Desktop/score/main.cpp
+1677871743 source:/home/matthew/Desktop/score/main.cpp
 	"View.h"
 
-1677700010 /home/matthew/Desktop/score/include/View.h
+1677872565 /home/matthew/Desktop/score/include/View.h
 	<stdio.h>
 	<GL/gl.h>
 	<GL/glut.h>
@@ -113,7 +113,7 @@
 	<bits/types/locale_t.h>
 	<bits/strings_fortified.h>
 
-1677697789 source:/home/matthew/Desktop/score/src/View.cpp
+1677872689 source:/home/matthew/Desktop/score/src/View.cpp
 	"View.h"
 	<stdlib.h>
 

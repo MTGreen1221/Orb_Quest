@@ -21,9 +21,9 @@ public:
 	int playerx = 0;
 	int playery = 0;
 	int playerz = 0;
-	double camerax = -20;
-	double cameray = 10;
-	double cameraz = 20;
+	float camerax = -20;
+	float cameray = 10;
+	float cameraz = 20;
 	void score_change(int x);
 	void ammo_change(int x);
 	void draw_string(float x, float y, float z, char* string, void* currentFont);

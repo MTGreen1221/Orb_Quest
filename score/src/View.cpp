@@ -7,6 +7,10 @@ void View :: init_lighting_and_depth_test() {
 	float light_Ka[] = {0.1,0.1,0.1,1.0};
 	glEnable(GL_DEPTH_TEST);
 	glLightfv(GL_LIGHT0, GL_AMBIENT, light_Ka);
+	float light_position[] = {camerax, cameray, cameraz};
+	float light_Kd[] = {0.5,0.5,0.5,1.0};
+	glLightfv(GL_LIGHT0,GL_POSITION, light_position);
+	glLightfv(GL_LIGHT0,GL_DIFFUSE, light_Kd);
 	quad = gluNewQuadric();
     gluQuadricDrawStyle(quad, GLU_LINE);
 }
@@ -83,6 +87,7 @@ void View :: draw_shapes()
     //floor
     glTranslatef(0,-50,0);
     glScalef(5,1,5);
+    glNormal3f(0,1,0);
     glutSolidCube(25);
     glPopMatrix();
     //player
@@ -90,7 +95,6 @@ void View :: draw_shapes()
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, material_player);
     glPushMatrix();
     glTranslatef(playerx,-21,playerz);
-    glColor3f(0,0,1);
     gluSphere(quad, 15, 15,15);
     float material_sash[] = {1.0,0.1,0.1,1.0};
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, material_sash);
@@ -102,6 +106,7 @@ void View :: draw_shapes()
     glScalef(.25,4,5);
     float material_wall[] = {1.0,0.1,1.0,1.0};
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, material_wall);
+    glNormal3f(1,0,0);
     glutSolidCube(25);
     glPopMatrix();
     glPushMatrix();
@@ -220,10 +225,10 @@ void View :: cameraMoveDown(){
     cameray-= 1;
 }
 void View :: turnOnLights(){
-
+    glEnable(GL_LIGHTING);
 }
 void View :: turnOffLights(){
-
+    glDisable(GL_LIGHTING);
 }
 void View::draw_object(float xy_aspect, float rotationX, float rotationY) {
 

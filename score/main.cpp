@@ -37,9 +37,13 @@ void myGlutKeyboard(unsigned char Key, int x, int y){
 		case 'x':
 			v.ammo_change(1);
 			break;
-			// Cycle through object types
-			//++obj %= 3;
-			//GLUI_Master.sync_live_all();
+        case 'k':
+            if(glIsEnabled(GL_LIGHTING)){
+                v.turnOffLights();
+            }
+            else{
+                v.turnOnLights();
+            }
 			break;
 		//case 'w':
 			// Toggle wireframe mode
