@@ -10,10 +10,10 @@ void myGlutKeyboard(unsigned char Key, int x, int y){
 	switch (Key) {
 	// A few keys here to test the sync_live capability.
         case 'q':
-            v.cameraLeft();
+            v.cameraRotateLeft(1);
             break;
         case 'e':
-            v.cameraRight();
+            v.cameraRotateRight(1);
             break;
         case 'a':
             v.movePlayerx(-1);

@@ -1,5 +1,6 @@
 #include "View.h"
 #include <stdlib.h>
+#include <math.h>
 
 void View :: init_lighting_and_depth_test() {
 	glEnable(GL_LIGHTING);
@@ -73,8 +74,8 @@ void View :: draw_3D_objects()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-150,150,-150,150,-150,150);
-    gluLookAt(camerax,cameray,cameraz,
-    0,0,0,
+    gluLookAt(camerax+playerx,cameray+playery,cameraz+playerz,
+    playerx,playery,playerz,
     0,1,0);
     draw_shapes();
 }
@@ -206,23 +207,31 @@ void View :: draw_string(float x, float y, float z, char* string, void* currentF
 
 	}
 }
-void View :: cameraLeft(){
-    camerax-= 1;
+void View :: cameraLeft(int x){
+    camerax-= x;
 }
-void View :: cameraRight(){
-    camerax+= 1;
+void View :: cameraRight(int x){
+    camerax+= x;
 }
-void View :: cameraForward(){
-    cameraz+= 1;
+void View :: cameraForward(int x){
+    cameraz+= x;
 }
-void View :: cameraBack(){
-    cameraz-= 1;
+void View :: cameraBack(int x){
+    cameraz-= x;
 }
-void View :: cameraMoveUp(){
-    cameray+= 1;
+void View :: cameraMoveUp(int x){
+    cameray+= x;
 }
-void View :: cameraMoveDown(){
-    cameray-= 1;
+void View :: cameraMoveDown(int x){
+    cameray-= x;
+}
+void View :: cameraRotateLeft(int x){
+    camerax = camerax*cos(x/57.2958) + cameraz*(-sin(x/57.2958));
+    cameraz = camerax*sin(x/57.2958) + cameraz*cos(x/57.2958);
+}
+void View :: cameraRotateRight(int x){
+    camerax = camerax*cos(x/57.2958) + cameraz*sin(x/57.2958);
+    cameraz = camerax*(-sin(x/57.2958)) + cameraz*cos(x/57.2958);
 }
 void View :: turnOnLights(){
     glEnable(GL_LIGHTING);
